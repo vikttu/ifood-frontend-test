@@ -10,13 +10,17 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const filter = axios.get('https://www.mocky.io/v2/5a25fade2e0000213aa90776')
-.then(res=>console.log(res))
+let filters = {}
+
+axios.get('https://www.mocky.io/v2/5a25fade2e0000213aa90776')
+.then(res=> filters = res.data.filters)
 .catch(err=>console.log(err));
 
-app.get('/api/filter', (req, res) => {
-  res.send(filter.data);
+app.get('/api/filters', (req, res) => {
+  res.send(filters);
 });
+
+
 
 app.post('/api/world', (req, res) => {
   console.log(req.body);
