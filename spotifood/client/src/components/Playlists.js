@@ -1,7 +1,7 @@
 import React from 'react';
 import './Playlists.css';
 
-function Playlists() {
+function Playlists(props) {
   return (
     <div className="playlists">
         Playlists will appear here

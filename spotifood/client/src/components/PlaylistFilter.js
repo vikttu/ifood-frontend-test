@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SelectCountry from './SelectCountry'
 import SelectLanguage from './SelectLanguage'
 import './PlaylistFilter.css';
 
-function PlaylistFilter() {
+function PlaylistFilter(props) {
   return (
     <div className="playlist-filter">
         <form>
-        <input type=''></input>
+        <input type='text' />
         <SelectLanguage />
         <SelectCountry />
-        <input type='text' placeholder='Search for playlists'></input>
+        <input type='text' placeholder='Search for playlists' onChange={} />
         </form>
     </div>
   );
