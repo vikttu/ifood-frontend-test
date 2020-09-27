@@ -4,31 +4,34 @@ import Playlists from './Playlists';
 import PlaylistFilter from './PlaylistFilter';
 import axios from 'axios';
 
-
-
 function App() {
-    const [filters, setFilters] = useState(()=>[])
-    const [playlists, setPlaylists] = useState(()=>[])
+    const [filters, setFilters] = useState()
+    const [playlists, setPlaylists] = useState()
 
     useEffect( ()=> {
+
       axios.get(`/api/filters`)
-      .then(res => setFilters(prevFilters => res.data))
-      .catch(err => console.log(err))
+      .then(res => setFilters(res.data.filters))
+      .catch(err => console.log(err));
+
+      axios.get(`/api/playlists`)
+      .then(res => setPlaylists(res.data.filters))
+      .catch(err => console.log(err));
+      
     }, [])
     console.log(filters)
-
-    useEffect( ()=> {
-      axios.get(`/api/playlists`)
-      .then(res => setPlaylists(prevPlaylists => res.data))
-      .catch(err => console.log(err))
-    }, [])
     console.log(playlists)
 
 
   return (
     <div className="App">
-      <PlaylistFilter filters={filters} />
-      <Playlists playlists={playlists} />
+    {
+      filters && playlists && 
+      (<>
+          <PlaylistFilter filters={filters} />
+          <Playlists playlists={playlists} />
+      </>)
+    }
     </div>
   );
 }

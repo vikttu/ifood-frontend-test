@@ -1,13 +1,17 @@
 import React from 'react';
+import LanguageOption from './LanguageOption'
 import './App.css';
 
-function SelectLanguage() {
+function SelectLanguage(props) {
+  
+  const languagesOptions = props.languages.values.map(language => <LanguageOption 
+    key={language.name} 
+    name={language.name} 
+    value={language.value} />)
+
   return (
     <select id='locale' name='locale'>
-        <option value="Portuguese">Portuguese</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+      {languagesOptions}
     </select>
   );
 }

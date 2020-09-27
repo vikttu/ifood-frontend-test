@@ -13,13 +13,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let filters = {}
 
 axios.get('https://www.mocky.io/v2/5a25fade2e0000213aa90776')
-.then(res=> filters = res.data.filters)
+.then(res=> filters = res.data)
 .catch(err=>console.log(err));
 
 app.get('/api/filters', (req, res) => {
   res.send(filters);
 });
 
+app.get('/api/playlists', (req, res) => {
+  res.send(filters);
+});
 
 
 app.post('/api/world', (req, res) => {

@@ -1,13 +1,17 @@
 import React from 'react';
+import CountryOption from './CountryOption';
 import './App.css';
 
-function SelectCountry() {
+function SelectCountry(props) {
+
+  const countriesOptions = props.countries.values.map(country => <CountryOption 
+    key={country.name} 
+    name={country.name} 
+    value={country.value} />)
+    
   return (
     <select id='country' name='country'>
-        <option value="monza">monza</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+        {countriesOptions}
     </select>
   );
 }
